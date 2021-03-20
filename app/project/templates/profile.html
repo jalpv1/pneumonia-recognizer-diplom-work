@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <!-- Main -->
+    <div class="main">
+        <h2>IDENTITY</h2>
+        <div class="card">
+            <div class="card-body">
+                <i class="fa fa-pen fa-xs edit"></i>
+                <table>
+                    <tbody>
+                     <tr>
+                            <td><img class="avatar" src="/static/images/avatar.jpeg" width="200" height="200" alt="" align="left"  /></td>
+                        </tr>
+                        <tr>
+                            <div class="userInfo">
+                            <td>Name</td>
+                            <td>:</td>
+                            <td>{{data.name}}</td>
+                                </div>
+                        </tr>
+                         <div class="userInfo">
+                        <tr>
+                            <td>Email</td>
+                            <td>:</td>
+                            <td>{{data.email}}</td>
+                        </tr>
+                              </div>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+                </div>
+{% endblock %}
