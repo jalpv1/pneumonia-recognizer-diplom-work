@@ -8,7 +8,7 @@ def recognize_image():
         datagen = ImageDataGenerator(rescale=1. / 255)
         from numpy.random import seed
         seed(1)
-        model = load_model('E:/Documents/diplomaDev/pneumonia-recogognizer-app/app/project/my_model')
+        model = load_model('E:/Documents/diplomaDev/pneumonia-recogognizer-app/my_model')
         model.summary()
         one_img = datagen.flow_from_directory(
                 'E:/Documents/diplomaDev/pneumonia-recogognizer-app/app/project/images',
