@@ -4,7 +4,7 @@ from keras_preprocessing.image import ImageDataGenerator
 
 def recognize_image():
         ans = "no"
-        image_size = 256
+        image_size = 128
         datagen = ImageDataGenerator(rescale=1. / 255)
         from numpy.random import seed
         seed(1)
@@ -15,34 +15,33 @@ def recognize_image():
                 target_size=(image_size, image_size),
                 color_mode="grayscale",
                 batch_size=1,
-                class_mode='binary')
+                class_mode='categorical')
         y_pred = model.predict(one_img)
         print(y_pred)
         anwer = create_answer(y_pred)
         return anwer
 
 def create_answer(y_pred):
-   answer = y_pred[0] > 0.5
    result = 'unknown'
-   probability = str(y_pred[0][0])
+   probability = y_pred[0][0]*100
    conclusion ='unknown'
-   status ='unknown'
-   if (answer[0] == True):
-       result = "Pneumonia was detected. The probability of disease is about "
-       conclusion = " Doctor consultation required."
-   if (answer[0] == False):
-      result = "Pneumonia was`t detected. The probability of disease is about "
-   conclusionstatus = (y_pred[0]>0.6)
-   if(conclusionstatus[0]==True):
-      conclusion = conclusion+ " The probability is closed to 50%. The expert analysis required"
-   statusWARNING = (y_pred[0] < 0.6 and y_pred[0] > 0.4 )
-   if(statusWARNING == True):
-       status = "WARNING"
-   statusWARNING = (y_pred[0] > 0.6)
-   if (statusWARNING == True):
-       status = "CRITICAL"
-   statusWARNING = (y_pred[0] < 0.40)
-   if (statusWARNING == True):
+   status = 'unknown'
+   pneumonia_probability = str(y_pred[0][0])
+   if(probability<40):
+       result = "was`t detected."
        status = "NORMAL"
-   data = {'conclusion': conclusion, 'probability': probability, 'status': status,'result':result}
+       conclusion = "The probability of pneumonia disease is low"
+   if (probability > 41 and probability < 59):
+       result = "was detected."
+       status = "INTERMEDIATE"
+       conclusion = "The probability of pneumonia disease is intermediate. Additional expert analysis required."
+   if (probability > 60 and probability < 70):
+       result = " was detected."
+       status = "UPPER-INTERMEDIATE"
+       conclusion = "The probability of pneumonia disease is high. Doctor consultation required."
+   if (probability > 70):
+       result = "was detected."
+       status = "CRITICAL"
+       conclusion = "The probability of pneumonia disease is very high. Doctor consultation required, immediately."
+   data = {'conclusion': conclusion, 'probability': str(round(probability)) + "%", 'status': status,'result':result}
    return data

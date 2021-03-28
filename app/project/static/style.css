@@ -12732,10 +12732,12 @@ float:right
 background:blue;
 }
 .recogPram{
-front-size:200%
+font-size:50%;
+float: right;
 }
 .recogLabel{
-front-size:200%
+font-size:50%;
+float: left;
 }
 /*h1,h5,h6{
 font-family: "FontAwesome";
@@ -12759,6 +12761,14 @@ font-family: "WorkSans-ExtraLight";
 src: url("../fonts/WorkSans-ExtraLight.ttf") format("truetype");
 font-style: normal;
 font-weight: normal;
+}
+table.mytable {
+   border: 1px solid #69c;
+   border-collapse: separate;
+   empty-cells: hide;
+}
+th.myth, td.mytd {
+   border: 2px solid #69c;
 }
 /* End */
 /*

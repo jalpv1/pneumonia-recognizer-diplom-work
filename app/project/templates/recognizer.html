@@ -13,46 +13,27 @@
     <p><input type="submit" value="Submit" class="example_d"></p>
 </form>
 <div>
-    <div id="staff" class="container">
-        <div class="title">
-            <div class="boxA">{% autoescape on %}
+             {%if data.data is defined%}
+                <table>
+            <tr>
+            <th >DATA</th>
+            <th>RESULT</th>
+            <th>STATUS    </th>
+            <th>PROBABILITY</th>
+            <th>CONCLUSION</th>
+             </tr>
+            <tr>
+            <td>{% autoescape on %}
                 {{data.data}}
-                {% endautoescape %}
+                {% endautoescape %}</td>
+             <td>{{data.result}}</td>
+             <td>{{data.status}}</td>
+              <td>{{data.probability}}</td>
+             <td>{{data.conclusion}}</td>
+             </tr>
+             </table>
+              {%endif%}
             </div>
-            <div class="boxB">
-            <span>
-              <table>
-                    <tbody>
-                  <tr>
-                      {%if data.data is defined%}
-                      <td class="recogLabel">Answer</td>
-                            <td  class="recogLabel">:</td>
-                      <td  class="recogPram">{{data.result}}</td>
-                  </tr>
-                 <tr>
-                            <td  class="recogLabel">Probability</td>
-                            <td>:</td>
-                            <td class="recogPram">{{data.probability}}</td>
-                  </tr>
-                     <tr>
-                            <td  class="recogLabel">Conclusion</td>
-                            <td  class="recogLabel">:</td>
-                            <td class="recogPram">{{data.conclusion}}</td>
-                  </tr>
-                 <tr>
-                            <td  class="recogLabel">Status</td>
-                            <td  class="recogLabel">:</td>
-                            <td class="recogPram">{{data.status}}</td>
-                  </tr>
-                    </tbody>
-                 </table>
-                {%endif%}
-            </span>
-
-            </div>
-        </div>
-    </div>
-</div>
 <!-- <form method="POST" action="/login">-->
 <!--            <div class="field">-->
 <!--                <div class="control">-->
@@ -73,4 +54,5 @@
 <!--{{data.data}}-->
 <!--{% endautoescape %}-->
 <!--{{data.result}}-->
+
 {% endblock %}

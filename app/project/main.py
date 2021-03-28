@@ -50,8 +50,8 @@ def recognize_post():
         data = recognize_image()
         import base64
         data_uri = base64.b64encode(open('E:/Documents/diplomaDev/pneumonia-recogognizer-app/app/project/images/one/'+filename, 'rb').read()).decode('utf-8')
-        img_tag = '<img src="data:image/png;base64,{0}">'.format(data_uri)
-        img = Image(img_tag,data['result'],data['status'],data['conclusion'],data['probability'])
+        img_tag = '<img src="data:image/png;base64,{0}" width="300" height="450" alt="">'.format(data_uri)
+        img = Image(img_tag,data['conclusion'],data['probability'],data['status'],data['result'])
         print(img.result)
         print(img.status)
         print(img.probability)
