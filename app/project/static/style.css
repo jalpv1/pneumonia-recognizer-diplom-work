@@ -490,6 +490,7 @@ hr {
 
 img {
 	height: auto;
+	border-radius: 10px;
 	max-width: 100%
 }
 
@@ -3523,7 +3524,7 @@ a.tag:hover {
 }
 
 .subtitle {
-	color: #4a4a4a;
+	color: rgb(105 91 91 / 44%);
 	font-size: 1.25rem;
 	font-weight: 400;
 	line-height: 1.25
@@ -11870,8 +11871,8 @@ print {
 }
 
 .hero.is-primary {
-	background-color: #908B8E;
-	color: #fff
+	background-color: #ffffff;
+	color: #343434c7
 }
 
 .hero.is-primary a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
@@ -11880,11 +11881,11 @@ print {
 }
 
 .hero.is-primary .title {
-	color: #fff
+  color: #847c7c
 }
 
 .hero.is-primary .subtitle {
-	color: rgba(255, 255, 255, .9)
+	color: rgb(118 151 167 / 90%);
 }
 
 .hero.is-primary .subtitle a:not(.button),
@@ -12613,19 +12614,20 @@ input[type="file"] {
 }
 
 label.custom-file-upload {
-    border: 1px solid #ccc;
+    border: 1px solid #343434c7;
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
 }
 
 .example_d {
-color: #494949 !important;
+border-radius:15px;
+color: #343434c7 !important;
 text-transform: uppercase;
 text-decoration: none;
-background: #e0d7d7;
+background: #ffffff;
 padding: 20px;
-border: 4px solid #494949 !important;
+border: 4px solid #a1b7b4  !important;
 display: inline-block;
 transition: all 0.4s ease 0s;
 width:140px;
@@ -12633,8 +12635,8 @@ margin-top:20px
 }
 .example_d:hover {
 color: #ffffff !important;
-background: #f6b93b;
-border-color: #f6b93b !important;
+background: #e2c547;
+border-color: #e2c547 !important;
 transition: all 0.4s ease 0s;
 }
 
@@ -12670,7 +12672,6 @@ body {
 .main .card {
     background-color: #fff;
     border-radius: 18px;
-    box-shadow: 1px 1px 8px 0 grey;
     height: auto;
     margin-bottom: 20px;
     padding: 20px 0 20px 50px;
@@ -12767,8 +12768,59 @@ table.mytable {
    border-collapse: separate;
    empty-cells: hide;
 }
+.answerBlock {
+background: #FFFFFF;
+padding: 10px;
+margin: 10px;
+margin-left: 200px;
+border-radius: 10px;
+border: 3px solid #adcbd4;
+height:300px;
+ }
+.answerItem{
+ margin-top: 10px;
+background: #FFFFFF;
+ }
+ .answerBlock1{
+
+position: absolute;
+width: 310px;
+height: 314px;
+
+background: #FFFFFF;
+border: 3px solid #adcbd4;
+box-sizing: border-box;
+border-radius: 15px;
+}
+ .answerIcon{
+ background: blue;
+padding: 10px;
+margin: 10px;
+margin-left: 200px;
+border-radius: 10px;
+ }
+ .answer{
+ margin-left: 150px;
+ }
 th.myth, td.mytd {
    border: 2px solid #69c;
+}
+.answerIcon {
+    background: beige;
+    border-radius: 100px;
+    margin-left: 100px;
+    margin-top: 20px;
+    font-size: 40px;
+    margin-right: -100px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -khtml-border-radius: 50%;
+}
+img.avatar {
+    border-radius: 450px;
 }
 /* End */
 /*

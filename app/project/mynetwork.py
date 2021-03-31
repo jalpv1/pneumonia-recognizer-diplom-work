@@ -24,24 +24,28 @@ def recognize_image():
 def create_answer(y_pred):
    result = 'unknown'
    probability = y_pred[0][0]*100
+   probability2 = y_pred[0][0]*100
+   probability_user = round(y_pred[0][0]) * 100
+   probability2_user =round(y_pred[0][1])* 100
+
    conclusion ='unknown'
    status = 'unknown'
    pneumonia_probability = str(y_pred[0][0])
    if(probability<40):
-       result = "was`t detected."
+       result = "Pneumonia was`t detected."
        status = "NORMAL"
        conclusion = "The probability of pneumonia disease is low"
    if (probability > 41 and probability < 59):
-       result = "was detected."
+       result = "Pneumonia was detected."
        status = "INTERMEDIATE"
        conclusion = "The probability of pneumonia disease is intermediate. Additional expert analysis required."
    if (probability > 60 and probability < 70):
-       result = " was detected."
+       result = " Pneumonia was detected."
        status = "UPPER-INTERMEDIATE"
        conclusion = "The probability of pneumonia disease is high. Doctor consultation required."
    if (probability > 70):
-       result = "was detected."
+       result = " Pneumonia was detected."
        status = "CRITICAL"
        conclusion = "The probability of pneumonia disease is very high. Doctor consultation required, immediately."
-   data = {'conclusion': conclusion, 'probability': str(round(probability)) + "%", 'status': status,'result':result}
+   data = {'conclusion': conclusion, 'probability': str(round(probability_user)) + "% " + str(round(probability2_user)) + "% ", 'status': status,'result':result}
    return data

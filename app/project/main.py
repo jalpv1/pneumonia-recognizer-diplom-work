@@ -3,13 +3,10 @@ from flask import Blueprint, render_template
 import os
 from flask import Flask, render_template, request, redirect, url_for, abort, app
 from werkzeug.utils import secure_filename
-from keras.models import load_model
-from keras_preprocessing.image import ImageDataGenerator
-import shutil
-from flask_login import login_user, logout_user, login_required,current_user
 
 from .mynetwork import recognize_image
 from .models import Image
+from . import db
 
 main = Blueprint('main', __name__)
 
@@ -42,22 +39,22 @@ def recognize_post():
         file_ext = os.path.splitext(filename)[1]
         if file_ext not in ['.jpg', '.png', '.jpeg']:
             abort(400)
-        # shutil.rmtree('E:/Documents/diplomaDev/pneumonia-recogognizer-app/app/project/images/one')
+        # shutil.rmtree('E:/Documents/diplomaDev/pneumonia-recogognizer-app/app/project/images/NORMAL')
         uploaded_file.save(
-            os.path.join('E:/Documents/diplomaDev/pneumonia-recogognizer-app/app/project/images/one', filename))
+            os.path.join('E:/Documents/diplomaDev/pneumonia-recogognizer-app/app/project/images/PNEUMONIA', filename))
         print("saved")
         print(uploaded_file)
         data = recognize_image()
         import base64
-        data_uri = base64.b64encode(open('E:/Documents/diplomaDev/pneumonia-recogognizer-app/app/project/images/one/'+filename, 'rb').read()).decode('utf-8')
-        img_tag = '<img src="data:image/png;base64,{0}" width="300" height="450" alt="">'.format(data_uri)
+        data_uri = base64.b64encode(open('E:/Documents/diplomaDev/pneumonia-recogognizer-app/app/project/images/PNEUMONIA/'+filename, 'rb').read()).decode('utf-8')
+        img_tag = '<img src="data:image/png;base64,{0}" width="450" height="450" alt="">'.format(data_uri)
         img = Image(img_tag,data['conclusion'],data['probability'],data['status'],data['result'])
         print(img.result)
         print(img.status)
         print(img.probability)
         print(img.conclusion)
 
-        os.remove('E:/Documents/diplomaDev/pneumonia-recogognizer-app/app/project/images/one/'+filename)
+        os.remove('E:/Documents/diplomaDev/pneumonia-recogognizer-app/app/project/images/PNEUMONIA/'+filename)
     return render_template('recognizer.html', data=img)
 
 

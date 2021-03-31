@@ -4,31 +4,44 @@
 
     <!-- Main -->
     <div class="main">
-        <h2>IDENTITY</h2>
         <div class="card">
             <div class="card-body">
                 <i class="fa fa-pen fa-xs edit"></i>
-                <table>
-                    <tbody>
-                     <tr>
-                            <td><img class="avatar" src="/static/images/avatar.jpeg" width="200" height="200" alt="" align="left"  /></td>
-                        </tr>
-                        <tr>
-                            <div class="userInfo">
-                            <td>Name</td>
-                            <td>:</td>
-                            <td>{{data.name}}</td>
-                                </div>
-                        </tr>
-                         <div class="userInfo">
-                        <tr>
-                            <td>Email</td>
-                            <td>:</td>
-                            <td>{{data.email}}</td>
-                        </tr>
-                              </div>
-                    </tbody>
-                </table>
+<!--                <table>-->
+<!--                    <tbody>-->
+<!--                     <tr>-->
+<!--                            <td><div class="cardPhoto"><img class="avatar" src="/static/images/avatar.jpeg" width="200" height="200" alt="" align="left"  /></div></td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--&lt;!&ndash;                            <div class="userInfo">&ndash;&gt;-->
+<!--                            <td>Name:{{data.name}}</td>-->
+<!--&lt;!&ndash;                            <td>:</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td>{{data.name}}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--                        </tr>-->
+<!--                         <div class="userInfo">-->
+<!--                        <tr>-->
+<!--                            <td>Email:{{data.email}}</td>-->
+<!--&lt;!&ndash;                            <td>:</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td>{{data.email}}</td>&ndash;&gt;-->
+<!--                        </tr>-->
+<!--                              </div>-->
+<!--                    </tbody>-->
+<!--                </table>-->
+                  <table>
+            <tr>
+                <th></th>
+                <th></th>
+            <tr>
+                <td><img class="avatar" src="/static/images/avatar.jpeg" width="200" height="200" alt="" align="left"  />
+                </td>
+                 <td>
+                     <div>Name: {{data.name}}<div>
+                <div> Email: {{data.email}}</div>
+                 </td>
+
+            </tr>
+        </table>
             </div>
         </div>
 

@@ -7,52 +7,33 @@
 <!--    <p><input type="submit" value="Submit"></p>-->
 <!--</form>-->
 <form method="POST" action="/recognize" enctype="multipart/form-data">
-    <label for="upload-photo" class="custom-file-upload"> <i class="fas fa-angle-down"></i> Upload</label>
+    <label for="upload-photo" class="custom-file-upload">Upload</label>
     <input type="file" name="file" id="upload-photo" class="custom-file-upload"/>
 
     <p><input type="submit" value="Submit" class="example_d"></p>
 </form>
 <div>
-
-
-    {%if data.data is defined%}
-    <div class="answer">
-        <table>
+             {%if data.data is defined%}
+                <table>
             <tr>
-                <th></th>
-                <th></th>
+            <th >DATA</th>
+            <th>RESULT</th>
+            <th>STATUS    </th>
+            <th>PROBABILITY</th>
+            <th>CONCLUSION</th>
+             </tr>
             <tr>
-                <td>{% autoescape on %}
-                    {{data.data}}
-                    {% endautoescape %}
-                </td>
-                <td>
-                    <div class="answerBlock">
-                         <div class="answerItem">
-                                 <div class="subtitle">
-                             RESEARCH REPORT</div>
-                        </div>
-                        <div class="answerItem">RESULT:
-                            {{data.result}}
-                        </div>
-
-                        <div class="answerItem">STATUS:
-                            {{data.status}}
-                        </div>
-                        <div class="answerItem">PROBABILITY:
-                            {{data.probability}}
-                        </div>
-                        <div class="answerItem">CONCLUSION:
-
-                            {{data.conclusion}}
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </div>
-    {%endif%}
-</div>
+            <td>{% autoescape on %}
+                {{data.data}}
+                {% endautoescape %}</td>
+             <td>{{data.result}}</td>
+             <td>{{data.status}}</td>
+              <td>{{data.probability}}</td>
+             <td>{{data.conclusion}}</td>
+             </tr>
+             </table>
+              {%endif%}
+            </div>
 <!-- <form method="POST" action="/login">-->
 <!--            <div class="field">-->
 <!--                <div class="control">-->

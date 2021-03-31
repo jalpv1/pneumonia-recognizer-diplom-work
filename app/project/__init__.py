@@ -11,7 +11,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
     app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024
     app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.jpeg']
-    app.config['UPLOAD_PATH'] = 'E:/Documents/diplomaDev/pneumonia-recognizer/recognizer-app/images/one'
+    app.config['UPLOAD_PATH'] = 'E:/Documents/diplomaDev/pneumonia-recognizer/recognizer-app/images/NORMAL'
 
     db.init_app(app)
 
