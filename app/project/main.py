@@ -49,27 +49,30 @@ def recognize_post():
         import base64
         data_uri = base64.b64encode(open('E:/Documents/diplomaDev/pneumonia-recogognizer-app/app/project/images/PNEUMONIA/'+filename, 'rb').read()).decode('utf-8')
         img_tag = '<img src="data:image/png;base64,{0}" width="450" height="450" alt="">'.format(data_uri)
-        img = Image(img_tag,data['conclusion'],data['probability'],data['status'],data['result'],user.email)
-        print(img.result)
-        print(img.status)
-        print(img.probability)
-        print(img.conclusion)
+        import uuid
+
+        identifier = str(uuid.uuid4().fields[-1])[:5]
+
+        img = Image(img_tag,data['conclusion'],data['probability'],data['status'],data['result'],user.email,identifier)
+        print( "id")
+
+        print(img.identifier)
+
+
         db.session.add(img)
         db.session.commit()
-        img2 = Image(img_tag,data['conclusion'],data['probability'],data['status'],data['result'],user.email)
+        img2 = Image(img_tag,data['conclusion'],data['probability'],data['status'],data['result'],user.email,identifier)
 
         os.remove('E:/Documents/diplomaDev/pneumonia-recogognizer-app/app/project/images/PNEUMONIA/'+filename)
     return render_template('recognizer.html', data=img2)
-ROWS_PER_PAGE = 1
+ROWS_PER_PAGE = 3
 
 #history.html
 @main.route('/history')
 def history():
     user = flask_login.current_user
-    # Set the pagination configuration
     page = request.args.get('page', 1, type=int)
-
-    data = Image.query.paginate(page=page, per_page=ROWS_PER_PAGE)
+    data = Image.query.filter(Image.email == user.email).paginate(page=page, per_page=ROWS_PER_PAGE)
     # data = Image.query.filter(Image.email == user.email).all()
     print(history)
     return render_template('history.html', data=data)

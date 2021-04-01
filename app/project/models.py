@@ -7,6 +7,7 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(100))
     name = db.Column(db.String(1000))
 
+
 class Image(db.Model):
     __tablename__ = 'images'
     id = db.Column(db.Integer, primary_key=True)
@@ -16,15 +17,18 @@ class Image(db.Model):
     status = db.Column(db.String(1000))
     email = db.Column(db.String(1000))
     data = db.Column(db.String(1000))
+    identifier = db.Column(db.String(1000))
 
 
-    def __init__(self, data, conclusion,probability,status, result,email):
+    def __init__(self, data, conclusion,probability,status, result, email, identifier):
         self.data = data
         self.result = result
         self.conclusion = conclusion
         self.probability = probability
         self.status = status
         self.email = email
+        self.identifier = identifier
+
 
 class Result:
     def __init__(self, conclusion,probability,status, result):
