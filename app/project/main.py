@@ -43,20 +43,31 @@ def recognize_post():
         uploaded_file.save(
             os.path.join('E:/Documents/diplomaDev/pneumonia-recogognizer-app/app/project/images/PNEUMONIA', filename))
         print("saved")
+        user = flask_login.current_user
         print(uploaded_file)
         data = recognize_image()
         import base64
         data_uri = base64.b64encode(open('E:/Documents/diplomaDev/pneumonia-recogognizer-app/app/project/images/PNEUMONIA/'+filename, 'rb').read()).decode('utf-8')
         img_tag = '<img src="data:image/png;base64,{0}" width="450" height="450" alt="">'.format(data_uri)
-        img = Image(img_tag,data['conclusion'],data['probability'],data['status'],data['result'])
+        img = Image(img_tag,data['conclusion'],data['probability'],data['status'],data['result'],user.email)
         print(img.result)
         print(img.status)
         print(img.probability)
         print(img.conclusion)
+        db.session.add(img)
+        db.session.commit()
+        img2 = Image(img_tag,data['conclusion'],data['probability'],data['status'],data['result'],user.email)
 
         os.remove('E:/Documents/diplomaDev/pneumonia-recogognizer-app/app/project/images/PNEUMONIA/'+filename)
-    return render_template('recognizer.html', data=img)
+    return render_template('recognizer.html', data=img2)
 
+#history.html
+@main.route('/history')
+def history():
+    user = flask_login.current_user
+    data = Image.query.filter(Image.email == user.email).all()
+    print(data)
+    return render_template('history.html', data=data)
 
 @main.route('/recognize')
 def recognize():

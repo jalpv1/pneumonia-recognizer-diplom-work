@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for image in data %}
+ <div class="answer">
+        <table>
+            <tr>
+                <th></th>
+                <th></th>
+            <tr>
+                <td>{% autoescape on %}
+                    {{image.data}}
+                    {% endautoescape %}
+                </td>
+                <td>
+                    <div class="answerBlock">
+                         <div class="answerItem">
+                                 <div class="subtitle">
+                             RESEARCH REPORT</div>
+                        </div>
+                        <div class="answerItem">RESULT:
+                            {{image.result}}
+                        </div>
+
+                        <div class="answerItem">STATUS:
+                            {{image.status}}
+                        </div>
+                        <div class="answerItem">PROBABILITY:
+                            {{image.probability}}
+                        </div>
+                        <div class="answerItem">CONCLUSION:
+
+                            {{image.conclusion}}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+{%endfor%}
+
+{% endblock %}
