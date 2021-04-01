@@ -60,13 +60,18 @@ def recognize_post():
 
         os.remove('E:/Documents/diplomaDev/pneumonia-recogognizer-app/app/project/images/PNEUMONIA/'+filename)
     return render_template('recognizer.html', data=img2)
+ROWS_PER_PAGE = 1
 
 #history.html
 @main.route('/history')
 def history():
     user = flask_login.current_user
-    data = Image.query.filter(Image.email == user.email).all()
-    print(data)
+    # Set the pagination configuration
+    page = request.args.get('page', 1, type=int)
+
+    data = Image.query.paginate(page=page, per_page=ROWS_PER_PAGE)
+    # data = Image.query.filter(Image.email == user.email).all()
+    print(history)
     return render_template('history.html', data=data)
 
 @main.route('/recognize')
