@@ -18,9 +18,10 @@ class Image(db.Model):
     email = db.Column(db.String(1000))
     data = db.Column(db.String(1000))
     identifier = db.Column(db.String(1000))
+    date = db.Column(db.String(1000))
 
 
-    def __init__(self, data, conclusion,probability,status, result, email, identifier):
+    def __init__(self, data, conclusion,probability,status, result, email, identifier,date):
         self.data = data
         self.result = result
         self.conclusion = conclusion
@@ -28,6 +29,8 @@ class Image(db.Model):
         self.status = status
         self.email = email
         self.identifier = identifier
+        self.date = date
+
 
 
 class Result:

@@ -52,8 +52,10 @@ def recognize_post():
         import uuid
 
         identifier = str(uuid.uuid4().fields[-1])[:5]
-
-        img = Image(img_tag,data['conclusion'],data['probability'],data['status'],data['result'],user.email,identifier)
+        import datetime
+        today = datetime.datetime.today()
+        date = today.strftime("%Y-%m-%d-%H.%M.%S")
+        img = Image(img_tag,data['conclusion'],data['probability'],data['status'],data['result'],user.email,identifier,date)
         print( "id")
 
         print(img.identifier)
@@ -61,11 +63,11 @@ def recognize_post():
 
         db.session.add(img)
         db.session.commit()
-        img2 = Image(img_tag,data['conclusion'],data['probability'],data['status'],data['result'],user.email,identifier)
+        img2 = Image(img_tag,data['conclusion'],data['probability'],data['status'],data['result'],user.email,identifier,date)
 
         os.remove('E:/Documents/diplomaDev/pneumonia-recogognizer-app/app/project/images/PNEUMONIA/'+filename)
     return render_template('recognizer.html', data=img2)
-ROWS_PER_PAGE = 3
+ROWS_PER_PAGE = 2
 
 #history.html
 @main.route('/history')
