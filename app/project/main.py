@@ -25,10 +25,6 @@ def profile():
 
     return render_template('profile.html', data=data )
 
-
-
-
-#
 @main.route('/recognize', methods=['POST'])
 def recognize_post():
 
