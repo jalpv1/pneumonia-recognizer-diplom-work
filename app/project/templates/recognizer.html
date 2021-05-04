@@ -14,7 +14,13 @@
 </form>
 <div>
 
-
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-warning">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+        {% endwith %}
     {%if data.data is defined%}
     <div class="answer">
         <table>
